@@ -1,0 +1,401 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/SamuraiWriter7/exhalation-layer-protocol/schemas/agent-exhalation-hook.schema.json",
+  "title": "Agent Exhalation Hook",
+  "description": "A hook record describing how an AI agent detects computational exhaust, invokes an exhalation policy, selects a compression route, preserves memory continuity, and records the result.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "hook_id",
+    "version",
+    "agent",
+    "detection",
+    "policy_invocation",
+    "route_invocation",
+    "memory_bridge_invocation",
+    "execution_boundary",
+    "traceability",
+    "result_expectation"
+  ],
+  "properties": {
+    "hook_id": {
+      "type": "string",
+      "description": "Unique identifier for this agent exhalation hook.",
+      "pattern": "^agent-exhalation-hook-[a-zA-Z0-9._-]+$"
+    },
+    "version": {
+      "type": "string",
+      "description": "Protocol version for this hook.",
+      "const": "0.5.0-candidate"
+    },
+    "agent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "agent_id",
+        "agent_type",
+        "autonomy_level"
+      ],
+      "properties": {
+        "agent_id": {
+          "type": "string",
+          "description": "Identifier of the AI agent invoking the exhalation hook.",
+          "minLength": 1
+        },
+        "agent_type": {
+          "type": "string",
+          "description": "Type of agent using this hook.",
+          "enum": [
+            "assistant_agent",
+            "retrieval_agent",
+            "memory_agent",
+            "orchestration_agent",
+            "compression_agent",
+            "monitoring_agent",
+            "other"
+          ]
+        },
+        "autonomy_level": {
+          "type": "string",
+          "description": "Degree of autonomy permitted for this agent.",
+          "enum": [
+            "advisory",
+            "semi_automatic",
+            "automatic",
+            "human_supervised"
+          ]
+        },
+        "execution_context": {
+          "type": "string",
+          "description": "Context in which the hook is invoked.",
+          "enum": [
+            "single_turn",
+            "multi_turn",
+            "batch_processing",
+            "interactive_session",
+            "scheduled_run",
+            "other"
+          ]
+        }
+      }
+    },
+    "detection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "signal_type",
+        "confidence",
+        "detected_target",
+        "evidence"
+      ],
+      "properties": {
+        "signal_type": {
+          "type": "string",
+          "description": "Signal that caused the agent to consider exhalation.",
+          "enum": [
+            "compute_pressure",
+            "memory_pressure",
+            "redundant_output",
+            "trace_duplication",
+            "output_length",
+            "quality_noise",
+            "low_reuse_score",
+            "route_obsolescence",
+            "policy_match",
+            "manual_request",
+            "other"
+          ]
+        },
+        "confidence": {
+          "type": "string",
+          "description": "Agent confidence in the detected exhaust condition.",
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        "detected_target": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "type",
+            "reference_id"
+          ],
+          "properties": {
+            "type": {
+              "type": "string",
+              "description": "Kind of computational material detected as possible exhaust.",
+              "enum": [
+                "stale_trace",
+                "redundant_output",
+                "overlong_generation",
+                "duplicated_kata",
+                "unused_route",
+                "obsolete_prompt",
+                "expired_memory",
+                "noisy_context",
+                "other"
+              ]
+            },
+            "reference_id": {
+              "type": "string",
+              "description": "Identifier of the detected target.",
+              "minLength": 1
+            }
+          }
+        },
+        "evidence": {
+          "type": "array",
+          "description": "Evidence used by the agent to justify exhalation consideration.",
+          "minItems": 1,
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "policy_invocation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "policy_id",
+        "decision",
+        "action_allowed",
+        "quality_risk_limit"
+      ],
+      "properties": {
+        "policy_id": {
+          "type": "string",
+          "description": "Exhalation Policy referenced by this hook."
+        },
+        "decision": {
+          "type": "string",
+          "description": "Policy decision returned to the agent.",
+          "enum": [
+            "allow",
+            "defer",
+            "review",
+            "deny"
+          ]
+        },
+        "action_allowed": {
+          "type": "boolean",
+          "description": "Whether the agent is allowed to continue toward exhalation."
+        },
+        "quality_risk_limit": {
+          "type": "string",
+          "description": "Maximum quality risk allowed by the invoked policy.",
+          "enum": [
+            "none",
+            "low",
+            "medium",
+            "high"
+          ]
+        }
+      }
+    },
+    "route_invocation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "route_id",
+        "route_mode",
+        "selected"
+      ],
+      "properties": {
+        "route_id": {
+          "type": "string",
+          "description": "Compression Route selected by the agent or policy."
+        },
+        "route_mode": {
+          "type": "string",
+          "description": "Routing mode selected for the detected exhaust.",
+          "enum": [
+            "direct_compression",
+            "summary_then_archive",
+            "pattern_reuse",
+            "hash_pointer_retention",
+            "detach_then_review",
+            "discard_after_preservation",
+            "manual_review_route",
+            "other"
+          ]
+        },
+        "selected": {
+          "type": "boolean",
+          "description": "Whether the route was selected for execution."
+        }
+      }
+    },
+    "memory_bridge_invocation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "bridge_required",
+        "memory_continuity_required"
+      ],
+      "properties": {
+        "bridge_required": {
+          "type": "boolean",
+          "description": "Whether a Memory Breathing Bridge is required before final exhalation."
+        },
+        "bridge_id": {
+          "type": "string",
+          "description": "Memory Breathing Bridge used by this hook, if any."
+        },
+        "memory_continuity_required": {
+          "type": "boolean",
+          "description": "Whether memory continuity must be preserved before exhalation."
+        },
+        "memory_action": {
+          "type": "string",
+          "description": "Memory action requested by the hook.",
+          "enum": [
+            "retain",
+            "forget",
+            "compact",
+            "ruminate",
+            "weight",
+            "archive",
+            "convert_to_pattern",
+            "defer_review"
+          ]
+        }
+      }
+    },
+    "execution_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "automatic_execution_allowed",
+        "human_review_required",
+        "stop_conditions"
+      ],
+      "properties": {
+        "automatic_execution_allowed": {
+          "type": "boolean",
+          "description": "Whether the agent may execute the exhalation automatically."
+        },
+        "human_review_required": {
+          "type": "boolean",
+          "description": "Whether human review is required before final execution."
+        },
+        "stop_conditions": {
+          "type": "array",
+          "description": "Conditions that stop automatic exhalation.",
+          "items": {
+            "type": "string",
+            "enum": [
+              "high_quality_risk",
+              "uncertain_origin",
+              "legal_or_royalty_relevance",
+              "loss_of_unique_trace",
+              "sensitive_memory",
+              "policy_denied",
+              "route_missing",
+              "memory_bridge_missing",
+              "manual_override",
+              "other"
+            ]
+          }
+        },
+        "boundary_note": {
+          "type": "string",
+          "description": "Optional note explaining the execution boundary."
+        }
+      }
+    },
+    "traceability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "trace_attached",
+        "chain_links"
+      ],
+      "properties": {
+        "trace_attached": {
+          "type": "boolean",
+          "description": "Whether a trace is attached to this hook."
+        },
+        "trace_id": {
+          "type": "string",
+          "description": "Trace identifier attached to this hook."
+        },
+        "chain_links": {
+          "type": "array",
+          "description": "Artifacts connected by this hook.",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "kind",
+              "reference_id"
+            ],
+            "properties": {
+              "kind": {
+                "type": "string",
+                "enum": [
+                  "exhalation_record",
+                  "exhalation_policy",
+                  "compression_route",
+                  "memory_breathing_bridge",
+                  "trace_receipt",
+                  "other"
+                ]
+              },
+              "reference_id": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    },
+    "result_expectation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "exhalation_executed",
+        "compute_pressure_reduced",
+        "memory_pressure_reduced",
+        "intelligence_preserved",
+        "quality_risk"
+      ],
+      "properties": {
+        "exhalation_executed": {
+          "type": "boolean",
+          "description": "Whether exhalation is expected to be executed."
+        },
+        "compute_pressure_reduced": {
+          "type": "boolean",
+          "description": "Whether compute pressure is expected to be reduced."
+        },
+        "memory_pressure_reduced": {
+          "type": "boolean",
+          "description": "Whether memory pressure is expected to be reduced."
+        },
+        "intelligence_preserved": {
+          "type": "boolean",
+          "description": "Whether reusable intelligence is expected to remain preserved."
+        },
+        "quality_risk": {
+          "type": "string",
+          "description": "Expected quality risk after hook execution.",
+          "enum": [
+            "none",
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        "notes": {
+          "type": "string",
+          "description": "Optional notes about expected hook result."
+        }
+      }
+    }
+  }
+}
