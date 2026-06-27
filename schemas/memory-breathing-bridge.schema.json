@@ -1,0 +1,313 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/SamuraiWriter7/exhalation-layer-protocol/schemas/memory-breathing-bridge.schema.json",
+  "title": "Memory Breathing Bridge",
+  "description": "A bridge record describing how exhaled or compressed computational material is connected to memory breathing cycles such as retention, forgetting, compaction, rumination, and reusable pattern preservation.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "bridge_id",
+    "version",
+    "source",
+    "memory_mapping",
+    "breathing_cycle",
+    "retention_strategy",
+    "forgetting_boundary",
+    "trace_continuity",
+    "result_expectation"
+  ],
+  "properties": {
+    "bridge_id": {
+      "type": "string",
+      "description": "Unique identifier for this memory breathing bridge.",
+      "pattern": "^memory-breathing-bridge-[a-zA-Z0-9._-]+$"
+    },
+    "version": {
+      "type": "string",
+      "description": "Protocol version for this bridge.",
+      "const": "0.4.0-candidate"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_type",
+        "reference_id"
+      ],
+      "properties": {
+        "source_type": {
+          "type": "string",
+          "description": "Type of exhalation-layer artifact entering the memory breathing bridge.",
+          "enum": [
+            "exhalation_record",
+            "exhalation_policy",
+            "compression_route",
+            "compressed_summary",
+            "pattern_library_entry",
+            "cold_archive_entry",
+            "trace_pointer",
+            "other"
+          ]
+        },
+        "reference_id": {
+          "type": "string",
+          "description": "Identifier of the source artifact.",
+          "minLength": 1
+        },
+        "linked_exhalation_id": {
+          "type": "string",
+          "description": "Optional linked Exhalation Record ID."
+        },
+        "linked_route_id": {
+          "type": "string",
+          "description": "Optional linked Compression Route ID."
+        }
+      }
+    },
+    "memory_mapping": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target_memory_layer",
+        "memory_action",
+        "preserved_form"
+      ],
+      "properties": {
+        "target_memory_layer": {
+          "type": "string",
+          "description": "Memory layer that receives the exhaled or compressed material.",
+          "enum": [
+            "short_term_memory",
+            "working_memory",
+            "rumination_layer",
+            "compressed_memory",
+            "long_term_memory",
+            "implicit_pattern",
+            "forgetting_queue",
+            "other"
+          ]
+        },
+        "memory_action": {
+          "type": "string",
+          "description": "Memory operation applied through the bridge.",
+          "enum": [
+            "retain",
+            "forget",
+            "compact",
+            "ruminate",
+            "weight",
+            "archive",
+            "convert_to_pattern",
+            "defer_review"
+          ]
+        },
+        "preserved_form": {
+          "type": "string",
+          "description": "Form in which intelligence is preserved after exhalation.",
+          "enum": [
+            "none",
+            "summary",
+            "pattern",
+            "trace_pointer",
+            "compressed_record",
+            "weighted_memory",
+            "implicit_kata",
+            "cold_archive"
+          ]
+        },
+        "memory_reference_id": {
+          "type": "string",
+          "description": "Identifier of the resulting memory artifact."
+        }
+      }
+    },
+    "breathing_cycle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "cycle_stage",
+        "cycle_role"
+      ],
+      "properties": {
+        "cycle_stage": {
+          "type": "string",
+          "description": "Stage of the memory breathing cycle activated by this bridge.",
+          "enum": [
+            "route",
+            "rumination",
+            "compaction",
+            "weighting",
+            "forgetting",
+            "retention",
+            "implicit_patterning",
+            "review"
+          ]
+        },
+        "cycle_role": {
+          "type": "string",
+          "description": "Role this bridge plays in the memory breathing cycle.",
+          "enum": [
+            "input_filter",
+            "compression_gate",
+            "retention_gate",
+            "forgetting_gate",
+            "reuse_gate",
+            "review_gate",
+            "trace_connector",
+            "other"
+          ]
+        },
+        "linked_memory_protocol": {
+          "type": "string",
+          "description": "Memory protocol connected by this bridge.",
+          "enum": [
+            "kazene-memory-breathing-protocol",
+            "structural-rumination-layer",
+            "ai-search-trace-receipt-standard",
+            "computational-pranayama-protocol",
+            "other"
+          ]
+        }
+      }
+    },
+    "retention_strategy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "retain_intelligence",
+        "retention_method"
+      ],
+      "properties": {
+        "retain_intelligence": {
+          "type": "boolean",
+          "description": "Whether reusable intelligence is retained after exhalation."
+        },
+        "retention_method": {
+          "type": "string",
+          "description": "Method used to retain intelligence.",
+          "enum": [
+            "none",
+            "summary_retention",
+            "pattern_retention",
+            "trace_pointer_retention",
+            "weighted_memory_retention",
+            "implicit_kata_retention",
+            "cold_archive_retention",
+            "manual_review"
+          ]
+        },
+        "retention_priority": {
+          "type": "string",
+          "description": "Priority of the retained memory artifact.",
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            "critical"
+          ]
+        }
+      }
+    },
+    "forgetting_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "forgetting_allowed",
+        "boundary_type"
+      ],
+      "properties": {
+        "forgetting_allowed": {
+          "type": "boolean",
+          "description": "Whether forgetting or full discard is allowed after preservation."
+        },
+        "boundary_type": {
+          "type": "string",
+          "description": "Boundary that constrains forgetting.",
+          "enum": [
+            "none",
+            "trace_required",
+            "origin_required",
+            "royalty_relevance",
+            "legal_relevance",
+            "human_review_required",
+            "unique_memory_detected",
+            "other"
+          ]
+        },
+        "boundary_note": {
+          "type": "string",
+          "description": "Optional explanation of the forgetting boundary."
+        }
+      }
+    },
+    "trace_continuity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "trace_preserved",
+        "continuity_method"
+      ],
+      "properties": {
+        "trace_preserved": {
+          "type": "boolean",
+          "description": "Whether trace continuity is preserved across exhalation and memory breathing."
+        },
+        "continuity_method": {
+          "type": "string",
+          "description": "Method used to preserve trace continuity.",
+          "enum": [
+            "none",
+            "direct_trace_link",
+            "hash_pointer",
+            "summary_reference",
+            "route_reference",
+            "memory_reference",
+            "manual_record"
+          ]
+        },
+        "trace_id": {
+          "type": "string",
+          "description": "Trace identifier preserved through the bridge."
+        }
+      }
+    },
+    "result_expectation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "memory_pressure_reduced",
+        "intelligence_preserved",
+        "reuse_enabled",
+        "amnesia_risk"
+      ],
+      "properties": {
+        "memory_pressure_reduced": {
+          "type": "boolean",
+          "description": "Whether memory pressure is expected to be reduced."
+        },
+        "intelligence_preserved": {
+          "type": "boolean",
+          "description": "Whether meaningful reusable intelligence is expected to remain preserved."
+        },
+        "reuse_enabled": {
+          "type": "boolean",
+          "description": "Whether the result can be reused in future reasoning, routing, or kata selection."
+        },
+        "amnesia_risk": {
+          "type": "string",
+          "description": "Risk that useful memory is lost through exhalation.",
+          "enum": [
+            "none",
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        "notes": {
+          "type": "string",
+          "description": "Optional notes about the expected result."
+        }
+      }
+    }
+  }
+}
