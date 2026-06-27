@@ -1,0 +1,241 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/SamuraiWriter7/exhalation-layer-protocol/schemas/exhalation-record.schema.json",
+  "title": "Exhalation Record",
+  "description": "A record describing how redundant, stale, or excessive computational output is compressed, discarded, archived, or recycled while preserving reusable intelligence.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "exhalation_id",
+    "version",
+    "target",
+    "reason",
+    "action",
+    "recycle",
+    "trace",
+    "result"
+  ],
+  "properties": {
+    "exhalation_id": {
+      "type": "string",
+      "description": "Unique identifier for this exhalation event.",
+      "pattern": "^exhalation-[a-zA-Z0-9._-]+$"
+    },
+    "version": {
+      "type": "string",
+      "description": "Protocol version for this record.",
+      "const": "0.1.0-candidate"
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "reference_id"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "The kind of computational material being exhaled.",
+          "enum": [
+            "stale_trace",
+            "redundant_output",
+            "overlong_generation",
+            "duplicated_kata",
+            "unused_route",
+            "obsolete_prompt",
+            "expired_memory",
+            "noisy_context",
+            "other"
+          ]
+        },
+        "reference_id": {
+          "type": "string",
+          "description": "Identifier of the target being exhaled, compressed, or recycled.",
+          "minLength": 1
+        },
+        "origin_protocol": {
+          "type": "string",
+          "description": "Optional protocol or repository from which the target originated.",
+          "enum": [
+            "computational-pranayama-protocol",
+            "auto-pranayama-protocol",
+            "kazene-memory-breathing-protocol",
+            "ai-search-trace-receipt-standard",
+            "structural-rumination-layer",
+            "other"
+          ]
+        }
+      }
+    },
+    "reason": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "category",
+        "description",
+        "severity"
+      ],
+      "properties": {
+        "category": {
+          "type": "string",
+          "description": "Reason for exhalation.",
+          "enum": [
+            "redundant_output",
+            "compute_pressure",
+            "memory_pressure",
+            "trace_duplication",
+            "low_reuse_value",
+            "route_obsolescence",
+            "quality_noise",
+            "other"
+          ]
+        },
+        "description": {
+          "type": "string",
+          "description": "Human-readable explanation of why this target is being exhaled.",
+          "minLength": 1
+        },
+        "severity": {
+          "type": "string",
+          "description": "How strongly this target contributes to computational waste.",
+          "enum": [
+            "low",
+            "medium",
+            "high"
+          ]
+        }
+      }
+    },
+    "action": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "method",
+        "preserves_intelligence"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Exhalation action applied to the target.",
+          "enum": [
+            "compress",
+            "discard",
+            "archive",
+            "summarize",
+            "detach",
+            "recycle",
+            "defer"
+          ]
+        },
+        "method": {
+          "type": "string",
+          "description": "Method used to perform the exhalation action.",
+          "enum": [
+            "summary_retention",
+            "pattern_retention",
+            "hash_pointer_retention",
+            "full_discard",
+            "cold_storage",
+            "route_detachment",
+            "kata_reuse",
+            "manual_review",
+            "other"
+          ]
+        },
+        "preserves_intelligence": {
+          "type": "boolean",
+          "description": "Whether the action preserves reusable intelligence while removing exhaust."
+        }
+      }
+    },
+    "recycle": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reusable_pattern"
+      ],
+      "properties": {
+        "reusable_pattern": {
+          "type": "boolean",
+          "description": "Whether any reusable pattern was extracted from the target."
+        },
+        "pattern_id": {
+          "type": "string",
+          "description": "Identifier for the extracted reusable pattern, if any."
+        },
+        "reuse_target": {
+          "type": "string",
+          "description": "Where the extracted pattern may be reused."
+        }
+      }
+    },
+    "trace": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "attached"
+      ],
+      "properties": {
+        "attached": {
+          "type": "boolean",
+          "description": "Whether this exhalation event is connected to a trace record."
+        },
+        "trace_id": {
+          "type": "string",
+          "description": "Trace identifier connected to this exhalation event."
+        },
+        "source_protocol": {
+          "type": "string",
+          "description": "Source protocol for the attached trace.",
+          "enum": [
+            "computational-pranayama-protocol",
+            "auto-pranayama-protocol",
+            "kazene-memory-breathing-protocol",
+            "ai-search-trace-receipt-standard",
+            "other"
+          ]
+        }
+      }
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "storage_reduced",
+        "compute_pressure_reduced",
+        "intelligence_preserved",
+        "quality_risk"
+      ],
+      "properties": {
+        "storage_reduced": {
+          "type": "boolean",
+          "description": "Whether the action reduced storage burden."
+        },
+        "compute_pressure_reduced": {
+          "type": "boolean",
+          "description": "Whether the action reduced computational pressure."
+        },
+        "intelligence_preserved": {
+          "type": "boolean",
+          "description": "Whether meaningful reusable intelligence was preserved."
+        },
+        "quality_risk": {
+          "type": "string",
+          "description": "Risk that the exhalation action removed useful intelligence.",
+          "enum": [
+            "none",
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        "notes": {
+          "type": "string",
+          "description": "Optional notes about the result."
+        }
+      }
+    }
+  }
+}
