@@ -2,70 +2,132 @@
 
 All notable changes to this project will be documented in this file.
 
-[0.4.0-candidate] - 2026-06-28
-Added
-Added Memory Breathing Bridge as the fourth schema of the Exhalation Layer Protocol.
-Added schemas/memory-breathing-bridge.schema.json.
-Added examples/memory-breathing-bridge.example.yaml.
-Updated scripts/validate_examples.py to validate:
-Exhalation Record
-Exhalation Policy
-Compression Route
-Memory Breathing Bridge
-Changed
-Extended the protocol from route-based compression to memory-cycle integration.
-Added support for:
-source artifact mapping;
-memory layer targeting;
-memory action definition;
-breathing cycle placement;
-retention strategy;
-forgetting boundaries;
-trace continuity;
-memory pressure and amnesia risk expectations.
-Design Principle
+## [0.5.0-candidate] - 2026-06-28
 
-Established the v0.4 principle:
+### Added
 
-Exhale without severing memory.
+* Added `Agent Exhalation Hook` as the fifth schema of the Exhalation Layer Protocol.
+* Added `schemas/agent-exhalation-hook.schema.json`.
+* Added `examples/agent-exhalation-hook.example.yaml`.
+* Updated `scripts/validate_examples.py` to validate:
 
-Positioning
-v0.1 records what was exhaled.
-v0.2 defines when and how exhalation is allowed.
-v0.3 defines where computational exhaust flows.
-v0.4 defines how exhaled or compressed material reconnects to memory breathing.
+  * `Exhalation Record`
+  * `Exhalation Policy`
+  * `Compression Route`
+  * `Memory Breathing Bridge`
+  * `Agent Exhalation Hook`
+
+### Changed
+
+* Extended the protocol from memory-cycle integration to AI-agent operability.
+* Added support for:
+
+  * agent identity and autonomy level;
+  * exhaust signal detection;
+  * policy invocation;
+  * compression route invocation;
+  * memory bridge invocation;
+  * automatic execution boundaries;
+  * human review requirements;
+  * traceability chain links;
+  * expected compute, memory, and quality outcomes.
+
+### Design Principle
+
+* Established the v0.5 principle:
+
+  > Agents may exhale, but never silently.
+
+### Positioning
+
+* `v0.1` records what was exhaled.
+* `v0.2` defines when and how exhalation is allowed.
+* `v0.3` defines where computational exhaust flows.
+* `v0.4` defines how exhaled or compressed material reconnects to memory breathing.
+* `v0.5` defines how AI agents safely invoke the exhalation flow.
+
+This completes the first arc of the Exhalation Layer Protocol and prepares it for future agent hooks, automated cleanup workflows, memory hygiene systems, and trace-aware computational metabolism.
+
+## [0.4.0-candidate] - 2026-06-28
+
+### Added
+
+* Added `Memory Breathing Bridge` as the fourth schema of the Exhalation Layer Protocol.
+* Added `schemas/memory-breathing-bridge.schema.json`.
+* Added `examples/memory-breathing-bridge.example.yaml`.
+* Updated `scripts/validate_examples.py` to validate:
+
+  * `Exhalation Record`
+  * `Exhalation Policy`
+  * `Compression Route`
+  * `Memory Breathing Bridge`
+
+### Changed
+
+* Extended the protocol from route-based compression to memory-cycle integration.
+* Added support for:
+
+  * source artifact mapping;
+  * memory layer targeting;
+  * memory action definition;
+  * breathing cycle placement;
+  * retention strategy;
+  * forgetting boundaries;
+  * trace continuity;
+  * memory pressure and amnesia risk expectations.
+
+### Design Principle
+
+* Established the v0.4 principle:
+
+  > Exhale without severing memory.
+
+### Positioning
+
+* `v0.1` records what was exhaled.
+* `v0.2` defines when and how exhalation is allowed.
+* `v0.3` defines where computational exhaust flows.
+* `v0.4` defines how exhaled or compressed material reconnects to memory breathing.
 
 This makes the protocol ready for deeper integration with memory compression, structural rumination, trace continuity, and reusable kata formation.
 
-[0.3.0-candidate] - 2026-06-28
-Added
-Added Compression Route as the third schema of the Exhalation Layer Protocol.
-Added schemas/compression-route.schema.json.
-Added examples/compression-route.example.yaml.
-Updated scripts/validate_examples.py to validate:
-Exhalation Record
-Exhalation Policy
-Compression Route
-Changed
-Extended the protocol from policy-based exhalation to route-based compression.
-Added support for:
-route source definition;
-route triggers;
-ordered route steps;
-intelligence preservation methods;
-destination mapping;
-quality and origin-loss risk control;
-storage, compute, and reuse expectations.
-Design Principle
+## [0.3.0-candidate] - 2026-06-28
 
-Established the v0.3 principle:
+### Added
 
-Do not compress blindly. Route the breath.
+* Added `Compression Route` as the third schema of the Exhalation Layer Protocol.
+* Added `schemas/compression-route.schema.json`.
+* Added `examples/compression-route.example.yaml`.
+* Updated `scripts/validate_examples.py` to validate:
 
-Positioning
-v0.1 records what was exhaled.
-v0.2 defines when and how exhalation is allowed.
-v0.3 defines where computational exhaust flows after the exhalation decision.
+  * `Exhalation Record`
+  * `Exhalation Policy`
+  * `Compression Route`
+
+### Changed
+
+* Extended the protocol from policy-based exhalation to route-based compression.
+* Added support for:
+
+  * route source definition;
+  * route triggers;
+  * ordered route steps;
+  * intelligence preservation methods;
+  * destination mapping;
+  * quality and origin-loss risk control;
+  * storage, compute, and reuse expectations.
+
+### Design Principle
+
+* Established the v0.3 principle:
+
+  > Do not compress blindly. Route the breath.
+
+### Positioning
+
+* `v0.1` records what was exhaled.
+* `v0.2` defines when and how exhalation is allowed.
+* `v0.3` defines where computational exhaust flows after the exhalation decision.
 
 This makes the protocol ready for future memory breathing bridges, agent hooks, trace routing, and reusable pattern libraries.
 
@@ -134,3 +196,4 @@ This makes the protocol safer for future AI agent hooks, memory compression brid
   * Kazene Memory Breathing Protocol
   * AI Search Trace Receipt Standard
   * Structural Rumination Layer
+
