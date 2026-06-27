@@ -1,0 +1,67 @@
+policy_id: "exhalation-policy-001"
+version: "0.2.0-candidate"
+
+scope:
+  applies_to:
+    - "stale_trace"
+    - "redundant_output"
+    - "overlong_generation"
+    - "noisy_context"
+  default_mode: "compress"
+  linked_protocols:
+    - "computational-pranayama-protocol"
+    - "auto-pranayama-protocol"
+    - "kazene-memory-breathing-protocol"
+
+triggers:
+  - type: "compute_pressure"
+    threshold: "The current output or trace volume exceeds the lightweight route budget."
+    priority: "high"
+  - type: "trace_duplication"
+    threshold: "The trace repeats an already preserved kata or route pattern."
+    priority: "medium"
+
+classification:
+  exhaust_categories:
+    - "duplicate"
+    - "stale"
+    - "overlong"
+    - "noisy"
+  intelligence_preservation_required: true
+  minimum_preservation_method: "summary_retention"
+
+decision_rules:
+  - rule_id: "rule-compress-duplicate-trace"
+    when:
+      category: "trace_duplication"
+      severity: "medium"
+    action:
+      type: "compress"
+      method: "summary_retention"
+    quality_risk_limit: "low"
+    requires_trace_attachment: true
+
+  - rule_id: "rule-recycle-overlong-output"
+    when:
+      category: "compute_pressure"
+      severity: "high"
+    action:
+      type: "recycle"
+      method: "kata_reuse"
+    quality_risk_limit: "medium"
+    requires_trace_attachment: false
+
+human_review_boundary:
+  required: true
+  conditions:
+    - "high_quality_risk"
+    - "uncertain_origin"
+    - "legal_or_royalty_relevance"
+    - "loss_of_unique_trace"
+  review_note: "Automatic exhalation must stop when the target may contain unique origin, legal, royalty, or high-value trace information."
+
+result_expectation:
+  storage_reduction_target: "medium"
+  compute_pressure_reduction_target: "medium"
+  quality_preservation_target: "strict"
+  notes: "The policy favors compression and pattern reuse over full discard."
