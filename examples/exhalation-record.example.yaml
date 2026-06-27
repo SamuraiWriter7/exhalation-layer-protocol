@@ -1,0 +1,34 @@
+exhalation_id: "exhalation-001"
+version: "0.1.0-candidate"
+
+target:
+  type: "stale_trace"
+  reference_id: "trace-2026-001"
+  origin_protocol: "computational-pranayama-protocol"
+
+reason:
+  category: "redundant_output"
+  description: "The trace duplicates an already preserved breathing pattern and no longer needs to be stored in full."
+  severity: "medium"
+
+action:
+  type: "compress"
+  method: "summary_retention"
+  preserves_intelligence: true
+
+recycle:
+  reusable_pattern: true
+  pattern_id: "kata-reuse-001"
+  reuse_target: "future lightweight response routing"
+
+trace:
+  attached: true
+  trace_id: "trace-2026-001"
+  source_protocol: "computational-pranayama-protocol"
+
+result:
+  storage_reduced: true
+  compute_pressure_reduced: true
+  intelligence_preserved: true
+  quality_risk: "low"
+  notes: "The redundant trace was compressed into a reusable kata pattern."
