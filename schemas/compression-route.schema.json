@@ -1,0 +1,340 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/SamuraiWriter7/exhalation-layer-protocol/schemas/compression-route.schema.json",
+  "title": "Compression Route",
+  "description": "A route definition describing how computational exhaust is directed toward compression, archival, recycling, detachment, discard, or human review while preserving reusable intelligence.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "route_id",
+    "version",
+    "source",
+    "route_trigger",
+    "route_path",
+    "preservation",
+    "destination",
+    "risk_control",
+    "result_expectation"
+  ],
+  "properties": {
+    "route_id": {
+      "type": "string",
+      "description": "Unique identifier for this compression route.",
+      "pattern": "^compression-route-[a-zA-Z0-9._-]+$"
+    },
+    "version": {
+      "type": "string",
+      "description": "Protocol version for this route.",
+      "const": "0.3.0-candidate"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target_type",
+        "reference_id"
+      ],
+      "properties": {
+        "target_type": {
+          "type": "string",
+          "description": "The kind of computational material entering the compression route.",
+          "enum": [
+            "stale_trace",
+            "redundant_output",
+            "overlong_generation",
+            "duplicated_kata",
+            "unused_route",
+            "obsolete_prompt",
+            "expired_memory",
+            "noisy_context",
+            "other"
+          ]
+        },
+        "reference_id": {
+          "type": "string",
+          "description": "Identifier of the material entering this route.",
+          "minLength": 1
+        },
+        "linked_policy_id": {
+          "type": "string",
+          "description": "Optional Exhalation Policy that authorized this route."
+        },
+        "linked_exhalation_id": {
+          "type": "string",
+          "description": "Optional Exhalation Record associated with this route."
+        }
+      }
+    },
+    "route_trigger": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "severity"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Trigger that activated this compression route.",
+          "enum": [
+            "compute_pressure",
+            "memory_pressure",
+            "trace_duplication",
+            "output_length",
+            "quality_noise",
+            "low_reuse_score",
+            "route_obsolescence",
+            "manual_request",
+            "policy_match",
+            "other"
+          ]
+        },
+        "severity": {
+          "type": "string",
+          "description": "Severity of the route trigger.",
+          "enum": [
+            "low",
+            "medium",
+            "high",
+            "critical"
+          ]
+        },
+        "description": {
+          "type": "string",
+          "description": "Optional explanation of why this route was activated."
+        }
+      }
+    },
+    "route_path": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "steps"
+      ],
+      "properties": {
+        "mode": {
+          "type": "string",
+          "description": "Overall routing mode.",
+          "enum": [
+            "direct_compression",
+            "summary_then_archive",
+            "pattern_reuse",
+            "hash_pointer_retention",
+            "detach_then_review",
+            "discard_after_preservation",
+            "manual_review_route",
+            "other"
+          ]
+        },
+        "steps": {
+          "type": "array",
+          "description": "Ordered route steps applied to the source material.",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "step_id",
+              "action"
+            ],
+            "properties": {
+              "step_id": {
+                "type": "string",
+                "description": "Identifier of this route step.",
+                "pattern": "^step-[a-zA-Z0-9._-]+$"
+              },
+              "action": {
+                "type": "string",
+                "description": "Action performed at this step.",
+                "enum": [
+                  "summarize",
+                  "compress",
+                  "extract_pattern",
+                  "archive",
+                  "detach",
+                  "hash_reference",
+                  "recycle",
+                  "discard",
+                  "review"
+                ]
+              },
+              "method": {
+                "type": "string",
+                "description": "Method used by this step.",
+                "enum": [
+                  "summary_retention",
+                  "pattern_retention",
+                  "hash_pointer_retention",
+                  "cold_storage",
+                  "route_detachment",
+                  "kata_reuse",
+                  "manual_review",
+                  "full_discard",
+                  "other"
+                ]
+              },
+              "output_reference": {
+                "type": "string",
+                "description": "Optional reference produced by this step."
+              }
+            }
+          }
+        }
+      }
+    },
+    "preservation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "intelligence_preserved",
+        "preservation_method"
+      ],
+      "properties": {
+        "intelligence_preserved": {
+          "type": "boolean",
+          "description": "Whether reusable intelligence is preserved by this route."
+        },
+        "preservation_method": {
+          "type": "string",
+          "description": "Method used to preserve meaningful intelligence.",
+          "enum": [
+            "none",
+            "summary_retention",
+            "pattern_retention",
+            "hash_pointer_retention",
+            "cold_storage",
+            "manual_review"
+          ]
+        },
+        "preserved_reference_id": {
+          "type": "string",
+          "description": "Identifier of the preserved intelligence artifact, if any."
+        },
+        "reusable_pattern": {
+          "type": "boolean",
+          "description": "Whether this route produced a reusable pattern."
+        }
+      }
+    },
+    "destination": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type"
+      ],
+      "properties": {
+        "type": {
+          "type": "string",
+          "description": "Final destination of the routed material.",
+          "enum": [
+            "compressed_summary",
+            "pattern_library",
+            "cold_archive",
+            "trace_pointer",
+            "detached_route",
+            "discarded",
+            "human_review_queue",
+            "other"
+          ]
+        },
+        "destination_id": {
+          "type": "string",
+          "description": "Identifier for the final destination."
+        },
+        "linked_protocol": {
+          "type": "string",
+          "description": "Protocol or repository that receives the routed material.",
+          "enum": [
+            "computational-pranayama-protocol",
+            "auto-pranayama-protocol",
+            "kazene-memory-breathing-protocol",
+            "ai-search-trace-receipt-standard",
+            "structural-rumination-layer",
+            "other"
+          ]
+        }
+      }
+    },
+    "risk_control": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "quality_risk",
+        "origin_loss_risk",
+        "requires_human_review"
+      ],
+      "properties": {
+        "quality_risk": {
+          "type": "string",
+          "description": "Risk that the route reduces useful quality.",
+          "enum": [
+            "none",
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        "origin_loss_risk": {
+          "type": "string",
+          "description": "Risk that origin, attribution, or trace value is lost.",
+          "enum": [
+            "none",
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        "requires_human_review": {
+          "type": "boolean",
+          "description": "Whether this route requires human review before finalization."
+        },
+        "review_reason": {
+          "type": "string",
+          "description": "Optional explanation for human review requirement."
+        }
+      }
+    },
+    "result_expectation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "storage_reduction",
+        "compute_pressure_reduction",
+        "reuse_value"
+      ],
+      "properties": {
+        "storage_reduction": {
+          "type": "string",
+          "enum": [
+            "none",
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        "compute_pressure_reduction": {
+          "type": "string",
+          "enum": [
+            "none",
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        "reuse_value": {
+          "type": "string",
+          "enum": [
+            "none",
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
