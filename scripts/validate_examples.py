@@ -29,6 +29,11 @@ VALIDATION_TARGETS = [
         "schema": ROOT / "schemas" / "memory-breathing-bridge.schema.json",
         "example": ROOT / "examples" / "memory-breathing-bridge.example.yaml",
     },
+    {
+        "name": "Agent Exhalation Hook",
+        "schema": ROOT / "schemas" / "agent-exhalation-hook.schema.json",
+        "example": ROOT / "examples" / "agent-exhalation-hook.example.yaml",
+    },
 ]
 
 
