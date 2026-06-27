@@ -13,7 +13,12 @@ VALIDATION_TARGETS = [
         "name": "Exhalation Record",
         "schema": ROOT / "schemas" / "exhalation-record.schema.json",
         "example": ROOT / "examples" / "exhalation-record.example.yaml",
-    }
+    },
+    {
+        "name": "Exhalation Policy",
+        "schema": ROOT / "schemas" / "exhalation-policy.schema.json",
+        "example": ROOT / "examples" / "exhalation-policy.example.yaml",
+    },
 ]
 
 
