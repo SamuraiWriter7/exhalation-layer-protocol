@@ -1,0 +1,54 @@
+route_id: "compression-route-001"
+version: "0.3.0-candidate"
+
+source:
+  target_type: "stale_trace"
+  reference_id: "trace-2026-001"
+  linked_policy_id: "exhalation-policy-001"
+  linked_exhalation_id: "exhalation-001"
+
+route_trigger:
+  type: "trace_duplication"
+  severity: "medium"
+  description: "The trace duplicates an already preserved breathing pattern and can be compressed into a reusable summary."
+
+route_path:
+  mode: "summary_then_archive"
+  steps:
+    - step_id: "step-summarize"
+      action: "summarize"
+      method: "summary_retention"
+      output_reference: "summary-trace-2026-001"
+
+    - step_id: "step-extract-pattern"
+      action: "extract_pattern"
+      method: "pattern_retention"
+      output_reference: "pattern-kata-reuse-001"
+
+    - step_id: "step-archive-original"
+      action: "archive"
+      method: "cold_storage"
+      output_reference: "archive-trace-2026-001"
+
+preservation:
+  intelligence_preserved: true
+  preservation_method: "pattern_retention"
+  preserved_reference_id: "pattern-kata-reuse-001"
+  reusable_pattern: true
+
+destination:
+  type: "pattern_library"
+  destination_id: "kata-reuse-library"
+  linked_protocol: "kazene-memory-breathing-protocol"
+
+risk_control:
+  quality_risk: "low"
+  origin_loss_risk: "low"
+  requires_human_review: false
+  review_reason: "No unique origin or legal attribution risk was detected."
+
+result_expectation:
+  storage_reduction: "medium"
+  compute_pressure_reduction: "medium"
+  reuse_value: "high"
+  notes: "The stale trace is compressed into a reusable kata pattern while the original is retained in cold archive."
