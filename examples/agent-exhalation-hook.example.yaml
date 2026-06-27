@@ -1,0 +1,64 @@
+hook_id: "agent-exhalation-hook-001"
+version: "0.5.0-candidate"
+
+agent:
+  agent_id: "memory-agent-001"
+  agent_type: "memory_agent"
+  autonomy_level: "human_supervised"
+  execution_context: "multi_turn"
+
+detection:
+  signal_type: "trace_duplication"
+  confidence: "high"
+  detected_target:
+    type: "stale_trace"
+    reference_id: "trace-2026-001"
+  evidence:
+    - "The target trace repeats an already preserved kata pattern."
+    - "A compression route and memory bridge are available for this target."
+
+policy_invocation:
+  policy_id: "exhalation-policy-001"
+  decision: "allow"
+  action_allowed: true
+  quality_risk_limit: "low"
+
+route_invocation:
+  route_id: "compression-route-001"
+  route_mode: "summary_then_archive"
+  selected: true
+
+memory_bridge_invocation:
+  bridge_required: true
+  bridge_id: "memory-breathing-bridge-001"
+  memory_continuity_required: true
+  memory_action: "convert_to_pattern"
+
+execution_boundary:
+  automatic_execution_allowed: false
+  human_review_required: true
+  stop_conditions:
+    - "uncertain_origin"
+    - "legal_or_royalty_relevance"
+    - "loss_of_unique_trace"
+    - "memory_bridge_missing"
+  boundary_note: "The agent may recommend exhalation, but final execution requires human review when origin or trace value may be affected."
+
+traceability:
+  trace_attached: true
+  trace_id: "trace-2026-001"
+  chain_links:
+    - kind: "exhalation_policy"
+      reference_id: "exhalation-policy-001"
+    - kind: "compression_route"
+      reference_id: "compression-route-001"
+    - kind: "memory_breathing_bridge"
+      reference_id: "memory-breathing-bridge-001"
+
+result_expectation:
+  exhalation_executed: false
+  compute_pressure_reduced: true
+  memory_pressure_reduced: true
+  intelligence_preserved: true
+  quality_risk: "low"
+  notes: "The agent prepares a safe exhalation path but leaves final execution to human review."
