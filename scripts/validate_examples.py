@@ -24,6 +24,11 @@ VALIDATION_TARGETS = [
         "schema": ROOT / "schemas" / "compression-route.schema.json",
         "example": ROOT / "examples" / "compression-route.example.yaml",
     },
+    {
+        "name": "Memory Breathing Bridge",
+        "schema": ROOT / "schemas" / "memory-breathing-bridge.schema.json",
+        "example": ROOT / "examples" / "memory-breathing-bridge.example.yaml",
+    },
 ]
 
 
