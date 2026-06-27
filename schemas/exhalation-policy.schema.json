@@ -1,0 +1,354 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/SamuraiWriter7/exhalation-layer-protocol/schemas/exhalation-policy.schema.json",
+  "title": "Exhalation Policy",
+  "description": "A policy describing when and how AI systems should compress, discard, archive, detach, recycle, or review computational exhaust.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "policy_id",
+    "version",
+    "scope",
+    "triggers",
+    "classification",
+    "decision_rules",
+    "human_review_boundary",
+    "result_expectation"
+  ],
+  "properties": {
+    "policy_id": {
+      "type": "string",
+      "description": "Unique identifier for this exhalation policy.",
+      "pattern": "^exhalation-policy-[a-zA-Z0-9._-]+$"
+    },
+    "version": {
+      "type": "string",
+      "description": "Protocol version for this policy.",
+      "const": "0.2.0-candidate"
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "applies_to",
+        "default_mode"
+      ],
+      "properties": {
+        "applies_to": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "description": "Kinds of computational material covered by this policy.",
+          "items": {
+            "type": "string",
+            "enum": [
+              "stale_trace",
+              "redundant_output",
+              "overlong_generation",
+              "duplicated_kata",
+              "unused_route",
+              "obsolete_prompt",
+              "expired_memory",
+              "noisy_context",
+              "other"
+            ]
+          }
+        },
+        "default_mode": {
+          "type": "string",
+          "description": "Default policy behavior when no rule matches.",
+          "enum": [
+            "preserve",
+            "compress",
+            "archive",
+            "review",
+            "discard"
+          ]
+        },
+        "linked_protocols": {
+          "type": "array",
+          "uniqueItems": true,
+          "description": "Related protocols this policy is designed to interoperate with.",
+          "items": {
+            "type": "string",
+            "enum": [
+              "computational-pranayama-protocol",
+              "auto-pranayama-protocol",
+              "kazene-memory-breathing-protocol",
+              "ai-search-trace-receipt-standard",
+              "structural-rumination-layer",
+              "other"
+            ]
+          }
+        }
+      }
+    },
+    "triggers": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Signals that can activate this exhalation policy.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "type",
+          "threshold",
+          "priority"
+        ],
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "compute_pressure",
+              "memory_pressure",
+              "trace_duplication",
+              "output_length",
+              "quality_noise",
+              "low_reuse_score",
+              "route_obsolescence",
+              "manual_request",
+              "other"
+            ]
+          },
+          "threshold": {
+            "type": "string",
+            "description": "Human-readable threshold or condition for activating this trigger.",
+            "minLength": 1
+          },
+          "priority": {
+            "type": "string",
+            "enum": [
+              "low",
+              "medium",
+              "high",
+              "critical"
+            ]
+          }
+        }
+      }
+    },
+    "classification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "exhaust_categories",
+        "intelligence_preservation_required"
+      ],
+      "properties": {
+        "exhaust_categories": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "description": "Categories of material treated as computational exhaust under this policy.",
+          "items": {
+            "type": "string",
+            "enum": [
+              "duplicate",
+              "stale",
+              "noisy",
+              "overlong",
+              "low_value",
+              "obsolete",
+              "sensitive_to_loss",
+              "other"
+            ]
+          }
+        },
+        "intelligence_preservation_required": {
+          "type": "boolean",
+          "description": "Whether reusable intelligence must be preserved before exhalation."
+        },
+        "minimum_preservation_method": {
+          "type": "string",
+          "description": "Minimum method required before removing the original material.",
+          "enum": [
+            "none",
+            "summary_retention",
+            "pattern_retention",
+            "hash_pointer_retention",
+            "cold_storage",
+            "manual_review"
+          ]
+        }
+      }
+    },
+    "decision_rules": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Rules that map an exhaust condition to an exhalation action.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "rule_id",
+          "when",
+          "action",
+          "quality_risk_limit"
+        ],
+        "properties": {
+          "rule_id": {
+            "type": "string",
+            "description": "Identifier for this decision rule.",
+            "pattern": "^rule-[a-zA-Z0-9._-]+$"
+          },
+          "when": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "category",
+              "severity"
+            ],
+            "properties": {
+              "category": {
+                "type": "string",
+                "enum": [
+                  "redundant_output",
+                  "compute_pressure",
+                  "memory_pressure",
+                  "trace_duplication",
+                  "low_reuse_value",
+                  "route_obsolescence",
+                  "quality_noise",
+                  "other"
+                ]
+              },
+              "severity": {
+                "type": "string",
+                "enum": [
+                  "low",
+                  "medium",
+                  "high"
+                ]
+              }
+            }
+          },
+          "action": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "type",
+              "method"
+            ],
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "compress",
+                  "discard",
+                  "archive",
+                  "summarize",
+                  "detach",
+                  "recycle",
+                  "defer",
+                  "review"
+                ]
+              },
+              "method": {
+                "type": "string",
+                "enum": [
+                  "summary_retention",
+                  "pattern_retention",
+                  "hash_pointer_retention",
+                  "full_discard",
+                  "cold_storage",
+                  "route_detachment",
+                  "kata_reuse",
+                  "manual_review",
+                  "other"
+                ]
+              }
+            }
+          },
+          "quality_risk_limit": {
+            "type": "string",
+            "description": "Maximum allowed quality risk for applying this rule automatically.",
+            "enum": [
+              "none",
+              "low",
+              "medium",
+              "high"
+            ]
+          },
+          "requires_trace_attachment": {
+            "type": "boolean",
+            "description": "Whether this rule requires an attached trace before execution."
+          }
+        }
+      }
+    },
+    "human_review_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "required",
+        "conditions"
+      ],
+      "properties": {
+        "required": {
+          "type": "boolean",
+          "description": "Whether human review is required under this policy."
+        },
+        "conditions": {
+          "type": "array",
+          "description": "Conditions that force human review even when automatic exhalation is enabled.",
+          "items": {
+            "type": "string",
+            "enum": [
+              "high_quality_risk",
+              "uncertain_origin",
+              "legal_or_royalty_relevance",
+              "loss_of_unique_trace",
+              "sensitive_memory",
+              "manual_override",
+              "other"
+            ]
+          }
+        },
+        "review_note": {
+          "type": "string",
+          "description": "Optional note explaining the review boundary."
+        }
+      }
+    },
+    "result_expectation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "storage_reduction_target",
+        "compute_pressure_reduction_target",
+        "quality_preservation_target"
+      ],
+      "properties": {
+        "storage_reduction_target": {
+          "type": "string",
+          "enum": [
+            "none",
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        "compute_pressure_reduction_target": {
+          "type": "string",
+          "enum": [
+            "none",
+            "low",
+            "medium",
+            "high"
+          ]
+        },
+        "quality_preservation_target": {
+          "type": "string",
+          "enum": [
+            "basic",
+            "standard",
+            "strict"
+          ]
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
