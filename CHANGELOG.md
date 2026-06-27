@@ -2,6 +2,41 @@
 
 All notable changes to this project will be documented in this file.
 
+[0.4.0-candidate] - 2026-06-28
+Added
+Added Memory Breathing Bridge as the fourth schema of the Exhalation Layer Protocol.
+Added schemas/memory-breathing-bridge.schema.json.
+Added examples/memory-breathing-bridge.example.yaml.
+Updated scripts/validate_examples.py to validate:
+Exhalation Record
+Exhalation Policy
+Compression Route
+Memory Breathing Bridge
+Changed
+Extended the protocol from route-based compression to memory-cycle integration.
+Added support for:
+source artifact mapping;
+memory layer targeting;
+memory action definition;
+breathing cycle placement;
+retention strategy;
+forgetting boundaries;
+trace continuity;
+memory pressure and amnesia risk expectations.
+Design Principle
+
+Established the v0.4 principle:
+
+Exhale without severing memory.
+
+Positioning
+v0.1 records what was exhaled.
+v0.2 defines when and how exhalation is allowed.
+v0.3 defines where computational exhaust flows.
+v0.4 defines how exhaled or compressed material reconnects to memory breathing.
+
+This makes the protocol ready for deeper integration with memory compression, structural rumination, trace continuity, and reusable kata formation.
+
 [0.3.0-candidate] - 2026-06-28
 Added
 Added Compression Route as the third schema of the Exhalation Layer Protocol.
