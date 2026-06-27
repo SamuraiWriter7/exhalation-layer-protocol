@@ -137,6 +137,43 @@ This layer prevents AI systems from confusing:
 
 The Exhalation Policy therefore acts as a safety boundary between computational efficiency and structural memory preservation.
 
+v0.3 — Compression Route
+
+Version v0.3.0-candidate introduces the Compression Route.
+
+While v0.1 records exhalation events and v0.2 defines exhalation policy, v0.3 defines how computational exhaust moves through a route toward compression, archival, pattern reuse, detachment, discard, or human review.
+
+Core Principle
+
+Do not compress blindly. Route the breath.
+
+AI systems should not compress computational material without knowing where the preserved intelligence, trace value, or reusable pattern will go.
+
+The Compression Route defines:
+
+what material enters the route;
+what trigger activated routing;
+which ordered steps are applied;
+how intelligence is preserved;
+where the routed material is sent;
+what quality and origin-loss risks exist;
+what storage, compute, and reuse outcomes are expected.
+Why Routing Matters
+
+Without routing, compression becomes a black box.
+
+With routing, compression becomes a visible path.
+
+This layer prevents AI systems from confusing:
+
+compression with disappearance;
+archival with forgetting;
+pattern reuse with distortion;
+trace detachment with origin loss;
+discard with safe exhalation.
+
+The Compression Route gives computational exhalation a visible pathway.
+
 ### Example
 
 ```yaml
