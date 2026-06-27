@@ -1,0 +1,41 @@
+bridge_id: "memory-breathing-bridge-001"
+version: "0.4.0-candidate"
+
+source:
+  source_type: "compression_route"
+  reference_id: "compression-route-001"
+  linked_exhalation_id: "exhalation-001"
+  linked_route_id: "compression-route-001"
+
+memory_mapping:
+  target_memory_layer: "compressed_memory"
+  memory_action: "convert_to_pattern"
+  preserved_form: "implicit_kata"
+  memory_reference_id: "memory-kata-reuse-001"
+
+breathing_cycle:
+  cycle_stage: "compaction"
+  cycle_role: "reuse_gate"
+  linked_memory_protocol: "kazene-memory-breathing-protocol"
+
+retention_strategy:
+  retain_intelligence: true
+  retention_method: "implicit_kata_retention"
+  retention_priority: "high"
+
+forgetting_boundary:
+  forgetting_allowed: true
+  boundary_type: "trace_required"
+  boundary_note: "The original material may be forgotten only after trace continuity and reusable pattern preservation are confirmed."
+
+trace_continuity:
+  trace_preserved: true
+  continuity_method: "route_reference"
+  trace_id: "trace-2026-001"
+
+result_expectation:
+  memory_pressure_reduced: true
+  intelligence_preserved: true
+  reuse_enabled: true
+  amnesia_risk: "low"
+  notes: "The compressed route is converted into an implicit kata while trace continuity remains available through the route reference."
