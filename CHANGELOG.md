@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file.
 
+[0.3.0-candidate] - 2026-06-28
+Added
+Added Compression Route as the third schema of the Exhalation Layer Protocol.
+Added schemas/compression-route.schema.json.
+Added examples/compression-route.example.yaml.
+Updated scripts/validate_examples.py to validate:
+Exhalation Record
+Exhalation Policy
+Compression Route
+Changed
+Extended the protocol from policy-based exhalation to route-based compression.
+Added support for:
+route source definition;
+route triggers;
+ordered route steps;
+intelligence preservation methods;
+destination mapping;
+quality and origin-loss risk control;
+storage, compute, and reuse expectations.
+Design Principle
+
+Established the v0.3 principle:
+
+Do not compress blindly. Route the breath.
+
+Positioning
+v0.1 records what was exhaled.
+v0.2 defines when and how exhalation is allowed.
+v0.3 defines where computational exhaust flows after the exhalation decision.
+
+This makes the protocol ready for future memory breathing bridges, agent hooks, trace routing, and reusable pattern libraries.
+
 ## [0.2.0-candidate] - 2026-06-27
 
 ### Added
