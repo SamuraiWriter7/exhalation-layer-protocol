@@ -19,6 +19,11 @@ VALIDATION_TARGETS = [
         "schema": ROOT / "schemas" / "exhalation-policy.schema.json",
         "example": ROOT / "examples" / "exhalation-policy.example.yaml",
     },
+    {
+        "name": "Compression Route",
+        "schema": ROOT / "schemas" / "compression-route.schema.json",
+        "example": ROOT / "examples" / "compression-route.example.yaml",
+    },
 ]
 
 
