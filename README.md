@@ -174,6 +174,45 @@ discard with safe exhalation.
 
 The Compression Route gives computational exhalation a visible pathway.
 
+v0.4 — Memory Breathing Bridge
+
+Version v0.4.0-candidate introduces the Memory Breathing Bridge.
+
+While v0.1 records exhalation events, v0.2 defines exhalation policy, and v0.3 defines compression routes, v0.4 connects exhaled or compressed computational material to memory breathing cycles.
+
+Core Principle
+
+Exhale without severing memory.
+
+AI systems should not treat exhalation as simple deletion.
+Material may be compressed, archived, converted into patterns, or forgotten, but memory continuity must be preserved when the material contains reusable intelligence, trace value, origin value, or structural learning.
+
+The Memory Breathing Bridge defines:
+
+what exhalation-layer artifact enters the memory bridge;
+which memory layer receives it;
+what memory action is applied;
+how it participates in the breathing cycle;
+how intelligence is retained;
+when forgetting is allowed;
+how trace continuity is preserved;
+what memory pressure, reuse, and amnesia risks are expected.
+Why Memory Breathing Matters
+
+Without memory breathing, exhalation becomes isolated cleanup.
+
+With memory breathing, exhalation becomes part of a larger metabolism.
+
+This layer prevents AI systems from confusing:
+
+forgetting with release;
+compression with memory death;
+pattern extraction with context loss;
+exhalation with structural amnesia;
+trace preservation with full storage.
+
+The Memory Breathing Bridge allows computational exhaust to become reusable memory without preserving unnecessary residue.
+
 ### Example
 
 ```yaml
